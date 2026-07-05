@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSIS SMA Negeri 6 Medan — Aksi Muda untuk 17 Tujuan Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2942;
+    --ink-2:#123A5C;
+    --paper:#F7F4EA;
+    --paper-2:#EFEADA;
+    --line:#D9D2BC;
+    --gold:#E8A33D;
+    --teal:#1B998B;
+    --coral:#E2583E;
+    --muted:#5C6B7A;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow:0 10px 30px -14px rgba(11,41,66,.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    margin:0 0 .4em;
+    letter-spacing:-.01em;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    color:var(--teal);
+    font-weight:700;
+    display:flex;align-items:center;gap:.5em;
+  }
+  .eyebrow::before{content:"";width:20px;height:2px;background:var(--teal);display:inline-block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;position:relative;}
+  img,svg{max-width:100%;display:block;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(247,244,234,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px;margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;}
+  .brand .mark{
+    width:38px;height:38px;border-radius:9px;background:var(--ink);
+    display:flex;align-items:center;justify-content:center;color:var(--gold);
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;
+  }
+  .brand small{display:block;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.65rem;color:var(--muted);letter-spacing:.05em;}
+  nav.links{display:flex;gap:22px;align-items:center;}
+  nav.links a{
+    font-size:.88rem;font-weight:600;text-decoration:none;color:var(--ink-2);
+    padding:6px 2px;border-bottom:2px solid transparent;transition:.2s;
+  }
+  nav.links a:hover{border-color:var(--gold);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Inter',sans-serif;font-weight:700;font-size:.85rem;
+    padding:11px 20px;border-radius:999px;border:none;cursor:pointer;
+    text-decoration:none;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-report{background:var(--coral);color:#fff;box-shadow:0 8px 20px -8px rgba(226,88,62,.6);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-light{background:var(--paper);color:var(--ink);}
+  .nav-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink);}
+
+  /* ---------- LOGOS ---------- */
+  .logo-row{display:flex;align-items:center;gap:8px;}
+  .logo-slot{
+    width:44px;height:44px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--white);
+  }
+  .logo-slot img{width:100%;height:100%;object-fit:contain;}
+  .logo-divider{width:1px;height:26px;background:var(--line);}
+  footer .logo-slot{background:rgba(255,255,255,.06);}
+  footer .logo-divider{background:rgba(255,255,255,.2);}
+
+  /* ---------- SCROLL PROGRESS ---------- */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:3px;z-index:300;width:0%;
+    background:linear-gradient(90deg,#E5243B,#DDA63A,#4C9F38,#26BDE2,#FCC30B,#3F7E44,#19486A);
+    transition:width .1s linear;
+  }
+
+  /* ---------- BACK TO TOP ---------- */
+  .to-top{
+    position:fixed;bottom:24px;left:24px;z-index:200;
+    width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--gold);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+    border:none;cursor:pointer;box-shadow:var(--shadow);
+    opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s;
+  }
+  .to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+  /* scrollspy active link */
+  nav.links a.active{border-color:var(--gold);color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(1200px 500px at 80% -10%, #16496f 0%, var(--ink) 55%, #071a2b 100%);
+    color:var(--paper);
+    padding:110px 0 80px;
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;}
+  .hero .eyebrow{color:var(--gold);}
+  .hero .eyebrow::before{background:var(--gold);}
+  .hero h1{
+    color:#fff;font-size:clamp(2.1rem,4.2vw,3.4rem);line-height:1.05;font-weight:600;
+    margin-top:.3em;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p.lead{color:#C9D6E0;font-size:1.05rem;max-width:52ch;margin:1.1em 0 1.8em;}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .stat-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:20px;
+  }
+  .stat-card b{
+    font-family:'Fraunces',serif;font-size:2.1rem;display:block;color:var(--gold);line-height:1;
+  }
+  .stat-card span{font-size:.78rem;color:#C9D6E0;}
+  .goal-strip{
+    display:flex;gap:5px;margin-top:26px;flex-wrap:wrap;
+  }
+  .goal-strip i{
+    width:22px;height:22px;border-radius:5px;display:inline-block;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{max-width:640px;margin-bottom:46px;}
+  .sec-head h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:600;}
+  .sec-head p{color:var(--muted);font-size:1rem;margin-top:.6em;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;}
+  .about-card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);
+  }
+  .about-card h3{font-size:1.05rem;margin-bottom:.5em;}
+  .about-card p{color:var(--muted);font-size:.92rem;margin:0;}
+  .vm-list{display:grid;gap:16px;}
+
+  /* ---------- SDG NAVIGATOR (signature) ---------- */
+  .sdg-toolbar{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    margin-bottom:26px;
+  }
+  .sdg-count{
+    font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);
+  }
+  .sdg-count b{color:var(--ink);}
+  .sdg-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;
+  }
+  .sdg-tile{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;
+    padding:14px 14px 12px;cursor:pointer;text-align:left;
+    display:flex;flex-direction:column;gap:8px;transition:.18s ease;
+    position:relative;overflow:hidden;
+  }
+  .sdg-tile::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c);
+  }
+  .sdg-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+  .sdg-tile.active{border-color:var(--c);box-shadow:var(--shadow);}
+  .sdg-tile .num{
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.75rem;color:var(--c);
+  }
+  .sdg-tile .name{font-size:.82rem;font-weight:700;line-height:1.25;color:var(--ink);}
+  .sdg-tile .cnt{font-size:.72rem;color:var(--muted);}
+  .sdg-panel{
+    margin-top:22px;background:var(--white);border:1px solid var(--line);
+    border-radius:var(--radius);padding:0;display:none;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .sdg-panel.open{display:block;}
+  .sdg-panel-head{
+    padding:20px 26px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:14px;border-left:6px solid var(--c);
+  }
+  .sdg-panel-head .num{
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.8rem;color:var(--c);
+  }
+  .sdg-panel-head h4{margin:0;font-size:1.15rem;}
+  .sdg-panel-head p{margin:2px 0 0;color:var(--muted);font-size:.85rem;}
+  .prog-list{list-style:none;margin:0;padding:14px 26px 22px;display:grid;gap:10px;}
+  .prog-list li{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:11px 14px;background:var(--paper);border-radius:9px;font-size:.87rem;
+  }
+  .badge{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:700;
+    padding:4px 9px;border-radius:999px;white-space:nowrap;text-transform:uppercase;letter-spacing:.03em;
+  }
+  .badge.selesai{background:#DCEEE0;color:#1E7A3D;}
+  .badge.berjalan{background:#FDEBD3;color:#B4700B;}
+  .badge.rencana{background:#E4EAF0;color:#3E5877;}
+
+  /* ---------- STRUCTURE ---------- */
+  .org-chart{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .org-node{
+    background:var(--ink);color:var(--paper);border-radius:10px;padding:14px 22px;
+    text-align:center;font-weight:700;font-size:.9rem;box-shadow:var(--shadow);
+    min-width:140px;
+  }
+  .org-node.top{background:var(--gold);color:var(--ink);}
+  .org-node .nama{display:block;font-weight:500;font-size:.75rem;opacity:.85;margin-top:3px;font-family:'Inter',sans-serif;}
+  .org-node small{display:block;font-weight:500;font-size:.7rem;opacity:.75;margin-top:2px;}
+  .org-branch{width:2px;height:20px;background:var(--line);}
+  .org-row2{
+    display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+  }
+  .org-row2 .org-node{
+    background:var(--white);color:var(--ink);border:1.5px solid var(--ink);
+    min-width:120px;
+  }
+  .org-row2 .org-node .nama{color:var(--muted);}
+  .org-branch-horizontal{
+    width:100%;max-width:600px;height:2px;background:var(--line);margin:0 auto;
+  }
+  .org-row-sekben{
+    display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin-top:4px;
+  }
+  .org-sub{
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+  }
+  .org-sub .label{
+    font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;
+  }
+  .org-sub .org-node{
+    min-width:130px;
+  }
+  .bidang-grid{
+    margin-top:34px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;
+  }
+  .bidang-card{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    display:flex;gap:12px;align-items:flex-start;
+    cursor:pointer;transition:.2s;
+  }
+  .bidang-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .bidang-card .idx{
+    font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--teal);font-size:.85rem;flex-shrink:0;
+  }
+  .bidang-card .info{flex:1;}
+  .bidang-card .info .nama-bidang{font-weight:600;font-size:.86rem;margin:0;}
+  .bidang-card .info .pengurus-bidang{
+    font-size:.78rem;color:var(--muted);margin:4px 0 0;
+  }
+  .bidang-card .info .pengurus-bidang strong{color:var(--ink);}
+
+  /* ---------- ORG UNDER OSIS ---------- */
+  .unit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}
+  .unit-card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:.2s;
+  }
+  .unit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .unit-icon{
+    width:44px;height:44px;border-radius:10px;background:var(--paper-2);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.3rem;
+  }
+  .unit-card h4{font-size:.98rem;margin-bottom:.3em;}
+  .unit-card p{font-size:.82rem;color:var(--muted);margin:0;}
+
+  /* ---------- PROGRESS ---------- */
+  .progress-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;}
+  .ring-box{display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .ring-legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;}
+  .ring-legend div{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--muted);}
+  .ring-legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .bar-row{margin-bottom:20px;}
+  .bar-row .lbl{display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;margin-bottom:7px;}
+  .bar-row .lbl span.n{color:var(--muted);font-weight:500;font-family:'JetBrains Mono',monospace;font-size:.78rem;}
+  .bar-track{height:10px;background:var(--paper-2);border-radius:99px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:99px;width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1);background:var(--teal);}
+
+  /* ---------- DOCUMENTATION ---------- */
+  .doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
+  .doc-card{
+    border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--white);
+  }
+  .doc-thumb{
+    height:150px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;
+  }
+  .doc-body{padding:14px 16px;}
+  .doc-body .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.05em;}
+  .doc-body h4{font-size:.92rem;margin:.3em 0 0;}
+  .doc-note{
+    margin-top:20px;font-size:.8rem;color:var(--muted);background:var(--paper-2);
+    border-radius:10px;padding:14px 18px;
+  }
+
+  /* ---------- NEWS ---------- */
+  .news-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;}
+  .news-feature{
+    background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:34px;
+    display:flex;flex-direction:column;justify-content:flex-end;min-height:340px;
+    background-image:linear-gradient(180deg, rgba(11,41,66,.2), rgba(7,26,43,.95)), repeating-linear-gradient(135deg, #16496f 0 18px, #123A5C 18px 36px);
+  }
+  .news-feature .eyebrow{color:var(--gold);}
+  .news-feature .eyebrow::before{background:var(--gold);}
+  .news-feature h3{color:#fff;font-size:1.5rem;margin:.4em 0;}
+  .news-feature p{color:#C9D6E0;font-size:.9rem;max-width:46ch;}
+  .news-list{display:grid;gap:14px;}
+  .news-item{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    display:flex;gap:14px;
+  }
+  .news-date{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);flex-shrink:0;width:64px;
+  }
+  .news-item h4{font-size:.9rem;margin:0 0 4px;}
+  .news-item p{font-size:.8rem;color:var(--muted);margin:0;}
+
+  /* ---------- REPORT / PENGADUAN CTA ---------- */
+  .report-cta{
+    background:linear-gradient(120deg, var(--coral), #C2432D);
+    color:#fff;border-radius:22px;padding:50px;
+    display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;
+  }
+  .report-cta h2{color:#fff;font-size:1.8rem;}
+  .report-cta p{color:#FBE3DC;font-size:.95rem;max-width:48ch;}
+  .report-cta .btn-light{color:var(--coral);font-size:.95rem;padding:14px 26px;}
+  .report-note{font-size:.72rem;color:#FBE3DC;margin-top:12px;opacity:.85;}
+
+  .float-report{
+    position:fixed;bottom:24px;right:24px;z-index:200;
+    box-shadow:0 14px 30px -10px rgba(226,88,62,.55);
+  }
+
+  /* ---------- FUN FACT WIDGET ---------- */
+  .fact-box{
+    background:var(--ink);color:#fff;border-radius:var(--radius);
+    padding:26px 30px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+    justify-content:space-between;margin-top:36px;
+  }
+  .fact-box .fact-text{max-width:64ch;font-size:.95rem;color:#DCE6EE;}
+  .fact-box .fact-text b{color:var(--gold);font-family:'Fraunces',serif;font-weight:700;}
+  .fact-box .btn{background:var(--gold);color:var(--ink);flex-shrink:0;}
+
+  /* ---------- SEARCH & FILTER ---------- */
+  .filter-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:22px;}
+  .search-box{
+    flex:1;min-width:220px;display:flex;align-items:center;gap:8px;
+    background:var(--white);border:1px solid var(--line);border-radius:999px;
+    padding:10px 16px;
+  }
+  .search-box input{
+    border:none;outline:none;background:transparent;font-family:'Inter',sans-serif;
+    font-size:.88rem;width:100%;color:var(--ink);
+  }
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700;
+    padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--white);
+    cursor:pointer;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;transition:.15s;
+  }
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .sdg-tile.dim{opacity:.28;filter:grayscale(.4);}
+  .prog-list li.hide{display:none;}
+  .no-match{padding:20px 26px;font-size:.85rem;color:var(--muted);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{margin-top:26px;display:grid;gap:10px;max-width:760px;}
+  .faq-item{background:rgba(255,255,255,.12);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.15);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;color:#fff;cursor:pointer;
+    padding:16px 20px;font-family:'Inter',sans-serif;font-weight:700;font-size:.9rem;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .faq-q .ic{transition:.2s;flex-shrink:0;color:#fff;}
+  .faq-item.open .faq-q .ic{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-item.open .faq-a{max-height:200px;}
+  .faq-a p{margin:0;padding:0 20px 16px;font-size:.9rem;color:#FBE3DC;line-height:1.6;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .doc-card{cursor:pointer;}
+  .lightbox{
+    position:fixed;inset:0;background:rgba(7,20,32,.85);z-index:400;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{
+    background:var(--white);border-radius:var(--radius);max-width:520px;width:100%;overflow:hidden;
+  }
+  .lightbox-thumb{height:260px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff;}
+  .lightbox-body{padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;}
+  .lightbox-body h4{margin:0 0 4px;font-size:1.05rem;}
+  .lightbox-close{
+    background:var(--paper-2);border:none;width:34px;height:34px;border-radius:50%;
+    cursor:pointer;font-size:1rem;flex-shrink:0;
+  }
+
+  footer{background:var(--ink);color:#C9D6E0;padding:56px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  footer h4{color:#fff;font-size:.95rem;margin-bottom:1em;}
+  footer a{color:#C9D6E0;text-decoration:none;font-size:.85rem;}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:20px;
+    font-size:.76rem;color:#8CA0B3;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .about-grid,.progress-wrap,.news-grid,.report-cta{grid-template-columns:1fr;}
+    nav.links{
+      position:fixed;inset:64px 0 0 0;background:var(--paper);flex-direction:column;
+      padding:30px 28px;display:none;gap:18px;border-top:1px solid var(--line);
+    }
+    nav.links.show{display:flex;}
+    .nav-toggle{display:block;}
+    section{padding:64px 0;}
+    .report-cta{padding:34px;}
+    .org-row-sekben{flex-direction:column;align-items:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo-row">
+        <div class="logo-slot"><img src="assets/logo-sma6.png" alt="Logo SMA Negeri 6 Medan"></div>
+        <div class="logo-divider"></div>
+        <div class="logo-slot"><img src="assets/logo-osis.png" alt="Logo OSIS SMA Negeri 6 Medan"></div>
+      </div>
+      <div>
+        OSIS SMAN 6 Medan
+        <small>PELOPOR PERUBAHAN • 17 TUJUAN GLOBAL</small>
+      </div>
+    </div>
+    <nav class="links" id="navLinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#program">Program Kerja</a>
+      <a href="#struktur">Struktur</a>
+      <a href="#unit">Unit Naungan</a>
+      <a href="#progress">Progress</a>
+      <a href="#dokumentasi">Dokumentasi</a>
+      <a href="#berita">Berita</a>
+      <a href="#pengaduan" class="btn btn-report">Form Pengaduan</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu">☰</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">OSIS SMA NEGERI 6 MEDAN</div>
+      <h1>Aksi kecil dari kelas,<br>dampak nyata untuk <em>17 Tujuan Global</em>.</h1>
+      <p class="lead">Setiap program kerja OSIS kami dirancang untuk menjawab satu atau lebih Tujuan Pembangunan Berkelanjutan (SDGs) — dari kantin sehat, gerakan hijau, hingga literasi digital. Ini bukan sekadar acara sekolah, ini latihan menjadi warga dunia.</p>
+      <div class="cta-row">
+        <a href="#program" class="btn btn-light">Lihat 77 Program Kerja</a>
+        <a href="#pengaduan" class="btn btn-ghost" style="border-color:#fff;color:#fff;">Sampaikan Aduan</a>
+      </div>
+      <div class="goal-strip" id="goalStrip"></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><b>17</b><span>Tujuan SDGs yang diadopsi</span></div>
+      <div class="stat-card"><b>77</b><span>Program kerja aktif periode ini</span></div>
+      <div class="stat-card"><b>9</b><span>Bidang dalam struktur OSIS</span></div>
+      <div class="stat-card"><b>9</b><span>Organisasi di bawah naungan OSIS</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" style="padding-top:40px;">
+  <div class="fact-box">
+    <div class="fact-text" id="factText">Memuat fakta...</div>
+    <button class="btn" id="factBtn">🔄 Fakta Lainnya</button>
+  </div>
+</div>
+
+<!-- ================= TENTANG ================= -->
+<section id="tentang">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Tentang Kami</div>
+      <h2>OSIS sebagai laboratorium keberlanjutan sekolah</h2>
+      <p>Organisasi Siswa Intra Sekolah (OSIS) SMA Negeri 6 Medan periode berjalan mengarusutamakan kerangka SDGs ke dalam seluruh program kerja, agar setiap kegiatan siswa punya arah dan makna yang terukur.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Profil Singkat</h3>
+        <p>OSIS SMA Negeri 6 Medan adalah wadah resmi organisasi kesiswaan yang menaungi seluruh kegiatan ekstrakurikuler dan minat-bakat siswa, bekerja sama dengan Pembina OSIS dan pihak sekolah untuk merancang program tahunan yang partisipatif.</p>
+      </div>
+      <div class="vm-list">
+        <div class="about-card">
+          <h3>Visi</h3>
+          <p>Menjadi organisasi siswa yang aktif, kolaboratif, dan berkontribusi nyata terhadap pencapaian Tujuan Pembangunan Berkelanjutan di lingkungan sekolah dan masyarakat sekitar.</p>
+        </div>
+        <div class="about-card">
+          <h3>Misi</h3>
+          <p>Mengintegrasikan nilai SDGs ke dalam program kerja lintas bidang; membangun kepemimpinan siswa yang inklusif; serta membuka ruang aspirasi dan pengaduan warga sekolah secara transparan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAM KERJA / SDG NAVIGATOR ================= -->
+<section id="program" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Peta Program Kerja</div>
+      <h2>77 program kerja, dikelompokkan ke 17 Tujuan SDGs</h2>
+      <p>Klik salah satu tujuan untuk melihat daftar program kerja dan status pelaksanaannya saat ini.</p>
+    </div>
+    <div class="sdg-toolbar">
+      <div class="sdg-count">Menampilkan <b>17</b> tujuan · total <b>77</b> program</div>
+      <div class="sdg-count">Sumber: rapat kerja OSIS — data dapat diperbarui berkala</div>
+    </div>
+    <div class="filter-row">
+      <div class="search-box">
+        🔍 <input type="text" id="searchProgram" placeholder="Cari program kerja, mis. 'donor darah'...">
+      </div>
+      <div class="chip-row" id="statusChips">
+        <button class="chip active" data-status="semua">Semua</button>
+        <button class="chip" data-status="selesai">Selesai</button>
+        <button class="chip" data-status="berjalan">Berjalan</button>
+        <button class="chip" data-status="rencana">Direncanakan</button>
+      </div>
+    </div>
+    <div class="sdg-grid" id="sdgGrid"></div>
+    <div class="sdg-panel" id="sdgPanel"></div>
+  </div>
+</section>
+
+<!-- ================= STRUKTUR ================= -->
+<section id="struktur">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Struktur Organisasi</div>
+      <h2>Kepengurusan inti dan sembilan bidang kerja</h2>
+      <p>Klik bidang kerja untuk melihat nama-nama pengurusnya.</p>
+    </div>
+    <div class="org-chart">
+      <div class="org-node top">Pembina OSIS<small>Guru Pembina Kesiswaan</small></div>
+      <div class="org-branch"></div>
+      <div class="org-node">Ketua OSIS<span class="nama">M. Rizky Fadillah</span></div>
+      <div class="org-branch"></div>
+      <div class="org-row2">
+        <div class="org-node">Wakil Ketua OSIS<span class="nama">Aisyah Putri Ramadhani</span></div>
+      </div>
+      <div class="org-branch"></div>
+      <div class="org-row-sekben">
+        <div class="org-sub">
+          <span class="label">Sekretaris</span>
+          <div class="org-node">Sekretaris 1<span class="nama">Nabila Azzahra</span></div>
+          <div class="org-node" style="background:var(--paper-2);color:var(--ink);border:1.5px solid var(--line);min-width:120px;font-weight:500;">Sekretaris 2<span class="nama">Khairunisa Siregar</span></div>
+        </div>
+        <div class="org-sub">
+          <span class="label">Bendahara</span>
+          <div class="org-node">Bendahara 1<span class="nama">Rahma Dwi Lestari</span></div>
+          <div class="org-node" style="background:var(--paper-2);color:var(--ink);border:1.5px solid var(--line);min-width:120px;font-weight:500;">Bendahara 2<span class="nama">Mutiara Ananda</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bidang-grid" id="bidangGrid"></div>
+  </div>
+</section>
+
+<!-- ================= UNIT DI BAWAH NAUNGAN OSIS ================= -->
+<section id="unit" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Ekosistem Siswa</div>
+      <h2>Organisasi &amp; unit kegiatan di bawah naungan OSIS</h2>
+      <p>OSIS mengoordinasikan sejumlah organisasi dan ekstrakurikuler agar program kerja dan kalender kegiatan saling terhubung.</p>
+    </div>
+    <div class="unit-grid" id="unitGrid"></div>
+  </div>
+</section>
+
+<!-- ================= PROGRESS ================= -->
+<section id="progress">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Transparansi</div>
+      <h2>Progres pelaksanaan program kerja</h2>
+      <p>Dipantau setiap bulan oleh Sekretaris OSIS bersama koordinator tiap bidang.</p>
+    </div>
+    <div class="progress-wrap">
+      <div class="ring-box">
+        <svg viewBox="0 0 200 200" width="220" height="220">
+          <circle cx="100" cy="100" r="82" fill="none" stroke="#EFEADA" stroke-width="20"/>
+          <circle id="ringSelesai" cx="100" cy="100" r="82" fill="none" stroke="#1B998B" stroke-width="20" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+          <circle id="ringBerjalan" cx="100" cy="100" r="82" fill="none" stroke="#E8A33D" stroke-width="20" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+          <text x="100" y="94" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="#0B2942" font-weight="700">77</text>
+          <text x="100" y="118" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#5C6B7A">PROGRAM KERJA</text>
+        </svg>
+        <div class="ring-legend">
+          <div><i style="background:#1B998B"></i> Selesai (28)</div>
+          <div><i style="background:#E8A33D"></i> Berjalan (34)</div>
+          <div><i style="background:#D9D2BC"></i> Direncanakan (15)</div>
+        </div>
+      </div>
+      <div id="barList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOKUMENTASI ================= -->
+<section id="dokumentasi" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Galeri</div>
+      <h2>Dokumentasi kegiatan</h2>
+      <p>Cuplikan kegiatan dari berbagai program kerja lintas bidang.</p>
+    </div>
+    <div class="doc-grid" id="docGrid"></div>
+    <div class="doc-note">Placeholder galeri — ganti setiap kartu dengan foto dokumentasi asli kegiatan (format JPG/PNG) saat website ini diisi datanya.</div>
+  </div>
+</section>
+
+<!-- ================= BERITA ================= -->
+<section id="berita">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Kabar Terbaru</div>
+      <h2>Berita &amp; pengumuman OSIS</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-feature">
+        <div class="eyebrow">Sorotan</div>
+        <h3>OSIS Luncurkan "Bulan Aksi Iklim" di Seluruh Kelas X–XII</h3>
+        <p>Rangkaian kegiatan penanaman pohon, edukasi jejak karbon, dan Car Free Day sekolah akan digelar serentak untuk mendukung Tujuan 13: Penanganan Perubahan Iklim.</p>
+      </div>
+      <div class="news-list" id="newsList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PENGADUAN ================= -->
+<section id="pengaduan">
+  <div class="wrap">
+    <div class="report-cta">
+      <div>
+        <div class="eyebrow" style="color:#FBE3DC;">Saluran Aspirasi</div>
+        <h2>Punya aduan, saran, atau laporan?</h2>
+        <p>Sampaikan langsung melalui formulir resmi OSIS. Identitas pelapor dapat dirahasiakan sesuai kebijakan formulir.</p>
+        <div class="report-note">Tombol ini terhubung ke Google Form — ganti tautan pada atribut href sesuai formulir pengaduan resmi sekolah Anda.</div>
+      </div>
+      <div>
+        <a class="btn btn-light" id="reportBtn" href="https://forms.gle/GANTI-DENGAN-LINK-FORM-PENGADUAN" target="_blank" rel="noopener">Buka Form Pengaduan ↗</a>
+      </div>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<a href="#pengaduan" class="btn btn-report float-report">✉ Aduan</a>
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <div class="lightbox-thumb" id="lbThumb">🖼️</div>
+    <div class="lightbox-body">
+      <div>
+        <h4 id="lbTitle"></h4>
+        <p id="lbTag" style="font-size:.8rem;color:var(--muted);"></p>
+      </div>
+      <button class="lightbox-close" id="lbClose">✕</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="logo-row" style="margin-bottom:14px;">
+        <div class="logo-slot"><img src="assets/logo-sma6.png" alt="Logo SMA Negeri 6 Medan"></div>
+        <div class="logo-divider"></div>
+        <div class="logo-slot"><img src="assets/logo-osis.png" alt="Logo OSIS SMA Negeri 6 Medan"></div>
+      </div>
+      <h4>OSIS SMA Negeri 6 Medan</h4>
+      <p style="font-size:.85rem;max-width:36ch;">Jl. Pancing Raya, Kec. Medan Tembung, Kota Medan, Sumatera Utara. Berkolaborasi mewujudkan 17 Tujuan Pembangunan Berkelanjutan dari lingkungan sekolah.</p>
+    </div>
+    <div>
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="#program">Program Kerja</a></li>
+        <li><a href="#struktur">Struktur Organisasi</a></li>
+        <li><a href="#dokumentasi">Dokumentasi</a></li>
+        <li><a href="#berita">Berita</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontak</h4>
+      <ul>
+        <li>osis@sman6medan.sch.id</li>
+        <li>Instagram @osis.sman6medan</li>
+        <li><a href="#pengaduan">Form Pengaduan Resmi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 OSIS SMA Negeri 6 Medan.</span>
+    <span>Dibangun untuk mendukung Agenda 2030 — Sustainable Development Goals.</span>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const SDGS = [
+  {n:1,name:"Tanpa Kemiskinan",c:"#E5243B",items:[
+    ["Bakti sosial untuk siswa kurang mampu","selesai"],
+    ["Penggalangan dana beasiswa yatim & dhuafa","berjalan"],
+    ["Program \"Sedekah Jumat Berkah\"","berjalan"]]},
+  {n:2,name:"Tanpa Kelaparan",c:"#DDA63A",items:[
+    ["Gerakan berbagi makan siang untuk siswa","berjalan"],
+    ["Kantin sehat & gizi seimbang","selesai"],
+    ["Kebun sekolah / hidroponik pangan mandiri","rencana"]]},
+  {n:3,name:"Kehidupan Sehat & Sejahtera",c:"#4C9F38",items:[
+    ["Donor darah bersama PMI","selesai"],
+    ["Penyuluhan kesehatan reproduksi remaja","selesai"],
+    ["Senam pagi rutin tiap Jumat","berjalan"],
+    ["Cek kesehatan gratis bersama UKS","selesai"],
+    ["Kampanye anti-narkoba","berjalan"],
+    ["Sosialisasi kesehatan mental & konseling sebaya","berjalan"]]},
+  {n:4,name:"Pendidikan Berkualitas",c:"#C5192D",items:[
+    ["Bimbingan belajar sebaya (tutor sebaya)","berjalan"],
+    ["Pojok baca & literasi kelas","selesai"],
+    ["Lomba karya tulis ilmiah remaja","berjalan"],
+    ["Pelatihan public speaking & debat","selesai"],
+    ["Kelas motivasi menuju PTN","berjalan"],
+    ["Pekan Bahasa dan Sastra","rencana"],
+    ["Pelatihan literasi digital","berjalan"],
+    ["Beasiswa prestasi internal OSIS","selesai"]]},
+  {n:5,name:"Kesetaraan Gender",c:"#FF3A21",items:[
+    ["Seminar kesetaraan gender & anti-bullying","selesai"],
+    ["Pemilihan ketua OSIS berbasis kompetensi","selesai"],
+    ["Pelatihan kepemimpinan perempuan","berjalan"],
+    ["Kampanye Stop Kekerasan terhadap Perempuan & Anak","berjalan"]]},
+  {n:6,name:"Air Bersih & Sanitasi",c:"#26BDE2",items:[
+    ["Gerakan Jumat bersih toilet sekolah","selesai"],
+    ["Edukasi hemat air di kelas","selesai"],
+    ["Perbaikan fasilitas cuci tangan","berjalan"],
+    ["Pengelolaan air hujan untuk taman sekolah","rencana"]]},
+  {n:7,name:"Energi Bersih & Terjangkau",c:"#FCC30B",items:[
+    ["Kampanye hemat listrik sekolah","selesai"],
+    ["Edukasi energi terbarukan","berjalan"],
+    ["Uji coba panel surya mini untuk lab","rencana"]]},
+  {n:8,name:"Pekerjaan Layak & Pertumbuhan Ekonomi",c:"#A21942",items:[
+    ["Pelatihan kewirausahaan siswa","berjalan"],
+    ["Bazar UMKM pelajar","selesai"],
+    ["Pekan Ekonomi Kreatif","berjalan"],
+    ["Kunjungan & magang singkat ke industri lokal","rencana"]]},
+  {n:9,name:"Industri, Inovasi & Infrastruktur",c:"#FD6925",items:[
+    ["Lomba inovasi teknologi tepat guna","berjalan"],
+    ["Klub robotik & coding","selesai"],
+    ["Pameran karya sains sekolah","selesai"],
+    ["Digitalisasi administrasi OSIS","berjalan"],
+    ["Pengembangan aplikasi absensi sekolah","rencana"]]},
+  {n:10,name:"Berkurangnya Kesenjangan",c:"#DD1367",items:[
+    ["Program mentoring siswa baru","selesai"],
+    ["Advokasi fasilitas siswa berkebutuhan khusus","berjalan"],
+    ["Beasiswa lintas kelas sosial","rencana"]]},
+  {n:11,name:"Kota & Permukiman Berkelanjutan",c:"#FD9D24",items:[
+    ["Penghijauan lingkungan sekolah","selesai"],
+    ["Desain taman sekolah ramah lingkungan","berjalan"],
+    ["Kerja bakti lingkungan sekitar sekolah","selesai"],
+    ["Sosialisasi tata ruang hijau kota","rencana"]]},
+  {n:12,name:"Konsumsi & Produksi Bertanggung Jawab",c:"#BF8B2E",items:[
+    ["Bank sampah sekolah","selesai"],
+    ["Gerakan kurangi plastik sekali pakai","selesai"],
+    ["Daur ulang kertas & kerajinan","berjalan"],
+    ["Kampanye belanja bijak","rencana"],
+    ["Pengelolaan sampah organik menjadi kompos","berjalan"]]},
+  {n:13,name:"Penanganan Perubahan Iklim",c:"#3F7E44",items:[
+    ["Penanaman 1.000 pohon","berjalan"],
+    ["Kampanye #SekolahHijau","selesai"],
+    ["Edukasi jejak karbon siswa","berjalan"],
+    ["Car Free Day sekolah","rencana"],
+    ["Lomba poster perubahan iklim","selesai"],
+    ["Studi aksi iklim bersama komunitas lingkungan","berjalan"]]},
+  {n:14,name:"Ekosistem Lautan",c:"#0A97D9",items:[
+    ["Edukasi bahaya sampah plastik ke laut","selesai"],
+    ["Kolaborasi bersih pantai bersama komunitas","rencana"]]},
+  {n:15,name:"Ekosistem Daratan",c:"#56C02B",items:[
+    ["Program adopsi pohon oleh tiap kelas","berjalan"],
+    ["Konservasi tanaman lokal sekolah","selesai"],
+    ["Pengenalan keanekaragaman hayati","berjalan"],
+    ["Lomba fotografi alam","selesai"],
+    ["Kunjungan edukasi taman hutan raya","rencana"]]},
+  {n:16,name:"Perdamaian, Keadilan & Kelembagaan Tangguh",c:"#00689D",items:[
+    ["Sosialisasi anti-bullying & perundungan","selesai"],
+    ["Musyawarah OSIS terbuka","selesai"],
+    ["Pelatihan mediasi konflik antarsiswa","berjalan"],
+    ["Pemilihan Ketua OSIS yang demokratis","selesai"]]},
+  {n:17,name:"Kemitraan untuk Mencapai Tujuan",c:"#19486A",items:[
+    ["Kolaborasi dengan OSIS sekolah lain se-Kota Medan","berjalan"],
+    ["Kemitraan dengan Dinas Lingkungan Hidup","rencana"],
+    ["Kerja sama dengan Puskesmas setempat","selesai"],
+    ["Kolaborasi dengan komunitas pemuda peduli SDGs","berjalan"],
+    ["Program mentoring bersama alumni","selesai"],
+    ["Forum OSIS se-Sumatera Utara","rencana"],
+    ["Kerja sama dengan NGO lingkungan","berjalan"],
+    ["Webinar / pertukaran pelajar internasional","rencana"]]}
+];
+
+// 9 BIDANG dengan nama pengurus
+const BIDANG = [
+  {nama:"Keimanan dan Ketakwaan terhadap Tuhan YME", pengurus:"Ahmad Fauzi, S.Pd."},
+  {nama:"Kehidupan Berbangsa dan Bernegara", pengurus:"Fitria Rahmawati, S.H."},
+  {nama:"Pendidikan Pendahuluan Bela Negara", pengurus:"Kapten (Purn.) Bambang S."},
+  {nama:"Kepribadian dan Budi Pekerti Luhur", pengurus:"Dra. Hj. Siti Maimunah"},
+  {nama:"Berorganisasi, Pendidikan Politik dan Kepemimpinan", pengurus:"Drs. Hasanuddin, M.Pd."},
+  {nama:"Keterampilan dan Kewirausahaan", pengurus:"Ir. Rina Marlina, M.M."},
+  {nama:"Kesegaran Jasmani dan Daya Kreasi", pengurus:"M. Iqbal, S.Pd."},
+  {nama:"Persepsi, Apresiasi dan Kreasi Seni", pengurus:"Rizky Amalia, S.Sn."},
+  {nama:"Teknologi Informasi dan Komunikasi", pengurus:"Andre Wijaya, S.Kom."}
+];
+
+const UNITS = [
+  ["🏛️","MPK","Majelis Perwakilan Kelas — pengawas & mitra legislasi OSIS."],
+  ["🌍","Duta SDGs","Perwakilan siswa yang mengampanyekan 17 Tujuan Global."],
+  ["🎖️","Paskibra","Pasukan pengibar bendera dan pembina kedisiplinan."],
+  ["⛑️","PMR","Palang Merah Remaja — kesehatan & kesiapsiagaan bencana."],
+  ["🏕️","Pramuka","Pendidikan kepanduan dan kepemimpinan lapangan."],
+  ["🕌","Rohis","Kerohanian Islam — pembinaan spiritual siswa muslim."],
+  ["✝️","Rokris","Kerohanian Kristen — pembinaan spiritual siswa kristiani."],
+  ["🔬","KIR","Karya Ilmiah Remaja — riset dan kompetisi sains."],
+  ["🌱","Pecinta Alam","Konservasi lingkungan dan kegiatan alam terbuka."]
+];
+
+const BARS = [
+  ["Pendidikan & Literasi",8,6],
+  ["Kesehatan & Kesejahteraan",6,5],
+  ["Lingkungan & Iklim",17,11],
+  ["Sosial & Kesetaraan",10,6],
+  ["Ekonomi & Kewirausahaan",8,4],
+  ["Kemitraan & Kelembagaan",12,7]
+];
+
+const DOCS = [
+  ["Bakti Sosial","Sosial","#E5243B"],
+  ["Donor Darah PMR","Kesehatan","#4C9F38"],
+  ["Pekan Literasi","Pendidikan","#C5192D"],
+  ["Penanaman 1000 Pohon","Lingkungan","#3F7E44"],
+  ["Bazar UMKM Pelajar","Ekonomi","#A21942"],
+  ["Pemilihan Ketua OSIS","Kelembagaan","#00689D"],
+  ["Klub Robotik & Coding","Inovasi","#FD6925"],
+  ["Gerakan Bersih Sekolah","Lingkungan","#26BDE2"]
+];
+
+const FACTS = [
+  "Ada <b>17 Tujuan SDGs</b> yang disepakati 193 negara PBB untuk dicapai pada tahun 2030.",
+  "Program <b>Bank Sampah Sekolah</b> mendukung Tujuan 12: Konsumsi dan Produksi yang Bertanggung Jawab.",
+  "Aksi menanam <b>1.000 pohon</b> oleh OSIS berkontribusi pada Tujuan 13 & 15 sekaligus.",
+  "SDGs kadang disebut <b>Agenda 2030</b> — rencana aksi global untuk manusia, planet, dan kemakmuran.",
+  "Kesetaraan gender (Tujuan 5) diwujudkan lewat pemilihan Ketua OSIS berbasis kompetensi, bukan gender.",
+  "Kantin sehat sekolah adalah contoh nyata Tujuan 2: Tanpa Kelaparan dalam skala kecil.",
+  "Setiap kelas yang mengadopsi satu pohon berarti ikut menjaga Tujuan 15: Ekosistem Daratan."
+];
+
+const FAQS = [
+  ["Apakah identitas pelapor dirahasiakan?","Formulir pengaduan menyediakan opsi pengisian anonim. Identitas hanya diketahui tim OSIS jika kamu memilih mencantumkannya."],
+  ["Berapa lama aduan direspon?","Tim OSIS menargetkan tindak lanjut awal dalam 3–5 hari kerja, tergantung jenis dan urgensi aduan."],
+  ["Aduan seperti apa yang bisa disampaikan?","Mulai dari fasilitas sekolah, perundungan, kritik program kerja, hingga saran kegiatan bertema SDGs."],
+  ["Apakah bisa mengajukan usulan program kerja baru?","Bisa. Gunakan formulir yang sama dan pilih kategori \"Usulan Program\" pada pertanyaan yang tersedia."]
+];
+
+const NEWS = [
+  ["12 Jun","Pemilihan Ketua OSIS berjalan demokratis dengan partisipasi 94% siswa."],
+  ["03 Jun","Bank sampah sekolah resmi beroperasi, dikelola Bidang Kewirausahaan."],
+  ["27 Mei","Tim KIR SMAN 6 Medan raih juara di kompetisi karya ilmiah tingkat kota."],
+  ["15 Mei","Kolaborasi lintas OSIS se-Kota Medan bahas aksi iklim bersama."],
+  ["02 Mei","Layanan Form Pengaduan OSIS resmi dibuka untuk seluruh warga sekolah."]
+];
+
+/* ============ RENDER ============ */
+const goalStrip = document.getElementById('goalStrip');
+SDGS.forEach(g=>{
+  const i = document.createElement('i');
+  i.style.background = g.c;
+  i.title = `${g.n}. ${g.name}`;
+  goalStrip.appendChild(i);
+});
+
+const sdgGrid = document.getElementById('sdgGrid');
+const sdgPanel = document.getElementById('sdgPanel');
+
+function statusLabel(s){
+  return s==="selesai" ? "Selesai" : s==="berjalan" ? "Berjalan" : "Direncanakan";
+}
+
+let currentGoal = null;
+let searchQuery = "";
+let statusFilter = "semua";
+
+function renderPanel(goal){
+  currentGoal = goal;
+  const filtered = goal.items.filter(([name,status])=>{
+    const matchesSearch = name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === "semua" || status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
+  sdgPanel.innerHTML = `
+    <div class="sdg-panel-head" style="--c:${goal.c}">
+      <div class="num">${String(goal.n).padStart(2,'0')}</div>
+      <div>
+        <h4>${goal.name}</h4>
+        <p>${goal.items.length} program kerja terkait tujuan ini</p>
+      </div>
+    </div>
+    ${filtered.length ? `<ul class="prog-list">
+      ${filtered.map(([name,status])=>`
+        <li><span>${name}</span><span class="badge ${status}">${statusLabel(status)}</span></li>
+      `).join('')}
+    </ul>` : `<div class="no-match">Tidak ada program yang cocok dengan pencarian/filter saat ini.</div>`}
+  `;
+  sdgPanel.classList.add('open');
+}
+
+function applyTileFilter(){
+  document.querySelectorAll('.sdg-tile').forEach((tile,idx)=>{
+    const goal = SDGS[idx];
+    const hasMatch = goal.items.some(([name,status])=>{
+      const matchesSearch = name.toLowerCase().includes(searchQuery.toLowerCase()) || goal.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesStatus = statusFilter === "semua" || status === statusFilter;
+      return matchesSearch && matchesStatus;
+    });
+    tile.classList.toggle('dim', searchQuery.trim() !== "" && !hasMatch);
+  });
+  if(currentGoal) renderPanel(currentGoal);
+}
+
+document.getElementById('searchProgram').addEventListener('input',(e)=>{
+  searchQuery = e.target.value;
+  applyTileFilter();
+});
+document.getElementById('statusChips').addEventListener('click',(e)=>{
+  if(!e.target.classList.contains('chip')) return;
+  document.querySelectorAll('#statusChips .chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  statusFilter = e.target.dataset.status;
+  applyTileFilter();
+});
+
+let activeTile = null;
+SDGS.forEach(g=>{
+  const tile = document.createElement('button');
+  tile.className = 'sdg-tile';
+  tile.style.setProperty('--c', g.c);
+  tile.innerHTML = `
+    <span class="num">TUJUAN ${String(g.n).padStart(2,'0')}</span>
+    <span class="name">${g.name}</span>
+    <span class="cnt">${g.items.length} program</span>
+  `;
+  tile.addEventListener('click', ()=>{
+    if(activeTile) activeTile.classList.remove('active');
+    tile.classList.add('active');
+    activeTile = tile;
+    renderPanel(g);
+    sdgPanel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+  sdgGrid.appendChild(tile);
+});
+// open first goal by default
+sdgGrid.firstChild.click();
+
+const bidangGrid = document.getElementById('bidangGrid');
+BIDANG.forEach((b,idx)=>{
+  const card = document.createElement('div');
+  card.className = 'bidang-card';
+  card.innerHTML = `
+    <span class="idx">${String(idx+1).padStart(2,'0')}</span>
+    <div class="info">
+      <p class="nama-bidang">${b.nama}</p>
+      <p class="pengurus-bidang"><strong>Pengurus:</strong> ${b.pengurus}</p>
+    </div>
+  `;
+  // Klik untuk menampilkan alert dengan nama pengurus
+  card.addEventListener('click', ()=>{
+    alert(`Bidang: ${b.nama}\nPengurus: ${b.pengurus}`);
+  });
+  bidangGrid.appendChild(card);
+});
+
+const unitGrid = document.getElementById('unitGrid');
+UNITS.forEach(([icon,name,desc])=>{
+  const card = document.createElement('div');
+  card.className = 'unit-card';
+  card.innerHTML = `<div class="unit-icon">${icon}</div><h4>${name}</h4><p>${desc}</p>`;
+  unitGrid.appendChild(card);
+});
+
+const barList = document.getElementById('barList');
+BARS.forEach(([label,total,done])=>{
+  const pct = Math.round((done/total)*100);
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.innerHTML = `
+    <div class="lbl"><span>${label}</span><span class="n">${done}/${total} program</span></div>
+    <div class="bar-track"><div class="bar-fill" data-pct="${pct}"></div></div>
+  `;
+  barList.appendChild(row);
+});
+
+const docGrid = document.getElementById('docGrid');
+const lightbox = document.getElementById('lightbox');
+const lbThumb = document.getElementById('lbThumb');
+const lbTitle = document.getElementById('lbTitle');
+const lbTag = document.getElementById('lbTag');
+DOCS.forEach(([title,tag,color])=>{
+  const card = document.createElement('div');
+  card.className = 'doc-card';
+  card.innerHTML = `
+    <div class="doc-thumb" style="background:linear-gradient(135deg, ${color}, #0B2942);">🖼️</div>
+    <div class="doc-body"><div class="tag">${tag}</div><h4>${title}</h4></div>
+  `;
+  card.addEventListener('click', ()=>{
+    lbThumb.style.background = `linear-gradient(135deg, ${color}, #0B2942)`;
+    lbTitle.textContent = title;
+    lbTag.textContent = tag + " · Ganti dengan foto dokumentasi asli";
+    lightbox.classList.add('open');
+  });
+  docGrid.appendChild(card);
+});
+document.getElementById('lbClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
+lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.classList.remove('open'); });
+
+const newsList = document.getElementById('newsList');
+NEWS.forEach(([date,text])=>{
+  const item = document.createElement('div');
+  item.className = 'news-item';
+  item.innerHTML = `<div class="news-date">${date}</div><div><h4>${text.split('.')[0]}.</h4><p>${text}</p></div>`;
+  newsList.appendChild(item);
+});
+
+/* progress ring */
+const doneTotal = 28, ongoingTotal = 34, allTotal = 77;
+const circumference = 2*Math.PI*82;
+const ringSelesai = document.getElementById('ringSelesai');
+const ringBerjalan = document.getElementById('ringBerjalan');
+ringSelesai.style.strokeDasharray = `${circumference}`;
+ringBerjalan.style.strokeDasharray = `${circumference}`;
+ringSelesai.style.strokeDashoffset = circumference;
+ringBerjalan.style.strokeDashoffset = circumference;
+
+function animateRings(){
+  const selesaiLen = circumference*(doneTotal/allTotal);
+  const berjalanLen = circumference*(ongoingTotal/allTotal);
+  ringSelesai.style.transition = 'stroke-dashoffset 1.2s ease';
+  ringBerjalan.style.transition = 'stroke-dashoffset 1.2s ease';
+  ringSelesai.style.strokeDashoffset = circumference - selesaiLen;
+  ringBerjalan.style.strokeDasharray = `${berjalanLen} ${circumference}`;
+  ringBerjalan.style.strokeDashoffset = -selesaiLen;
+}
+
+/* animate bars + rings on scroll into view */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      if(entry.target.id === 'progress'){
+        animateRings();
+        document.querySelectorAll('.bar-fill').forEach(el=>{
+          el.style.width = el.dataset.pct + '%';
+        });
+      }
+      io.unobserve(entry.target);
+    }
+  });
+},{threshold:.3});
+io.observe(document.getElementById('progress'));
+
+/* mobile nav toggle */
+const navToggle = document.getElementById('navToggle');
+const navLinksEl = document.getElementById('navLinks');
+navToggle.addEventListener('click', ()=> navLinksEl.classList.toggle('show'));
+navLinksEl.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navLinksEl.classList.remove('show')));
+
+/* fun fact widget */
+const factText = document.getElementById('factText');
+let lastFact = -1;
+function showFact(){
+  let i;
+  do{ i = Math.floor(Math.random()*FACTS.length); } while(i === lastFact && FACTS.length>1);
+  lastFact = i;
+  factText.innerHTML = "💡 " + FACTS[i];
+}
+showFact();
+document.getElementById('factBtn').addEventListener('click', showFact);
+
+/* FAQ accordion */
+const faqList = document.getElementById('faqList');
+FAQS.forEach(([q,a])=>{
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `
+    <button class="faq-q"><span>${q}</span><span class="ic">+</span></button>
+    <div class="faq-a"><p>${a}</p></div>
+  `;
+  item.querySelector('.faq-q').addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+    faqList.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+  faqList.appendChild(item);
+});
+
+/* scroll progress bar */
+const scrollProgress = document.getElementById('scrollProgress');
+function updateScrollProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  scrollProgress.style.width = scrolled + '%';
+}
+document.addEventListener('scroll', updateScrollProgress);
+
+/* back to top */
+const toTopBtn = document.getElementById('toTop');
+document.addEventListener('scroll', ()=>{
+  toTopBtn.classList.toggle('show', window.scrollY > 500);
+});
+toTopBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* scrollspy nav */
+const spySections = ['tentang','program','struktur','unit','progress','dokumentasi','berita','pengaduan']
+  .map(id=>document.getElementById(id)).filter(Boolean);
+const spyLinks = Array.from(navLinksEl.querySelectorAll('a[href^="#"]'));
+const spyObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id = entry.target.id;
+      spyLinks.forEach(l=> l.classList.toggle('active', l.getAttribute('href') === '#'+id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+spySections.forEach(sec=> spyObserver.observe(sec));
+
+/* count-up hero stats */
+const statEls = document.querySelectorAll('.stat-card b');
+const statTargets = [17,77,9,9];
+statEls.forEach((el,idx)=>{
+  const target = statTargets[idx];
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target/40));
+  const timer = setInterval(()=>{
+    current += step;
+    if(current >= target){ current = target; clearInterval(timer); }
+    el.textContent = current;
+  }, 30);
+});
+</script>
+</body>
+</html>
